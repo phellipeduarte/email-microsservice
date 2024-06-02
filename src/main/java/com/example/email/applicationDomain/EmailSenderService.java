@@ -1,4 +1,4 @@
-package com.example.email.application;
+package com.example.email.applicationDomain;
 
 import com.example.email.adapters.EmailSenderGateway;
 import com.example.email.core.EmailSenderUseCase;

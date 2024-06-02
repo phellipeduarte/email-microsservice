@@ -1,6 +1,6 @@
 package com.example.email.controllers;
 
-import com.example.email.application.EmailSenderService;
+import com.example.email.applicationDomain.EmailSenderService;
 import com.example.email.core.EmailRequest;
 import com.example.email.core.exceptions.EmailServiceException;
 import org.springframework.beans.factory.annotation.Autowired;

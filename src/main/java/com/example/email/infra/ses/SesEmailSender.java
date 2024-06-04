@@ -5,12 +5,16 @@ import com.amazonaws.services.simpleemail.model.*;
 import com.example.email.adapters.EmailSenderGateway;
 import com.example.email.core.exceptions.EmailServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 @Service
 public class SesEmailSender implements EmailSenderGateway {
 
     private final AmazonSimpleEmailService amazonSimpleEmailService;
+
+    @Autowired
+    private Environment environment;
 
     @Autowired
     public SesEmailSender(AmazonSimpleEmailService amazonSimpleEmailService) {
@@ -20,7 +24,7 @@ public class SesEmailSender implements EmailSenderGateway {
     @Override
     public void sendEmail(String to, String subject, String body) {
         SendEmailRequest request = new SendEmailRequest()
-                .withSource("lpdrtsf@gmail.com")
+                .withSource(environment.getProperty("env.SENDER_EMAIL"))
                 .withDestination(new Destination().withToAddresses(to))
                 .withMessage(new Message()
                         .withSubject(new Content(subject))

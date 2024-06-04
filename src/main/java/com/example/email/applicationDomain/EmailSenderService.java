@@ -17,6 +17,6 @@ public class EmailSenderService implements EmailSenderUseCase {
 
     @Override
     public void sendEmail(String to, String subject, String body) {
-
+        emailSenderGateway.sendEmail(to, subject, body);
     }
 }
